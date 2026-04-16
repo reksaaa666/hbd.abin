@@ -45,7 +45,7 @@
       padding: 20px;
     }
 
-    h1 { font-size: 2em; margin-bottom: 10px; }
+    h1 { font-size: 2.2em; margin-bottom: 10px; }
     h2 { margin-bottom: 25px; }
 
     .card {
@@ -78,7 +78,6 @@
       opacity: 0.8;
     }
 
-    /* BUTTON */
     #musicControl {
       position: fixed;
       top: 20px;
@@ -134,15 +133,15 @@
 
   <div class="card">
     <div class="date">
-      17 April 2026
+      17 April 2004 — 17 April 2026
     </div>
 
     <div class="poem" id="poem"></div>
   </div>
 
   <footer>
-    made with love 💛 and Github Pages
-    
+    made with love 💛 | hosted on 
+    <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
   </footer>
 </div>
 
@@ -167,14 +166,14 @@
     }
   }
 
-  // PARTICLES (tetap)
+  // PARTICLES
   const c = document.getElementById("particles");
   const ctx = c.getContext("2d");
   c.width = innerWidth;
   c.height = innerHeight;
 
   let p = [];
-  for(let i=0;i<120;i++){
+  for(let i=0;i<130;i++){
     p.push({
       x:Math.random()*c.width,
       y:Math.random()*c.height,
@@ -198,7 +197,18 @@
   }
   draw();
 
-  // PUISI
+  // HEART
+  setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💛";
+    h.style.left = Math.random()*100 + "vw";
+    h.style.animationDuration = (Math.random()*3+3)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  }, 250);
+
+  // PUISI (6 DETIK)
   const paragraphs = [
 "Di antara hari-hari\nyang terus berlari,\nada satu tanggal\nyang selalu punya arti.",
 "Bukan hanya tentang\nbertambah usia,\ntapi tentang kamu...\nyang tetap sama hangatnya.",
@@ -222,7 +232,7 @@
         poem.classList.add("fade-in");
 
         i++;
-        setTimeout(showParagraph, 4200);
+        setTimeout(showParagraph, 6000); // 🔥 lebih lama
       }, 600);
     }
   }
